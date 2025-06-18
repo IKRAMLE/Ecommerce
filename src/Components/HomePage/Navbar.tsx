@@ -59,18 +59,18 @@ const Navbar = () => {
                   type="text"
                   placeholder="Search for products..."
                   className="w-full px-6 py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
-                           outline-none ring-2 ring-orange-500/50 focus:ring-orange-500 focus:bg-white
+                           outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
                            transition-all duration-300"
                 />
                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
                   <button 
                     onClick={triggerImageUpload}
-                    className="text-gray-500 hover:text-orange-500 transition-colors duration-300 p-1"
+                    className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"
                     title="Search by image"
                   >
                     <Camera className="h-5 w-5" />
                   </button>
-                  <button className="text-gray-500 group-hover:text-orange-500 transition-colors duration-300">
+                  <button className="text-gray-500 group-hover:text-pink-500 transition-colors duration-300">
                     <Search className="h-5 w-5" />
                   </button>
                 </div>
@@ -89,7 +89,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-6">
             {/* Language Selector */}
             <div className="hidden md:block relative group">
-              <button className="text-gray-700 hover:text-orange-500 p-2 rounded-full hover:bg-orange-50 
+              <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 
                                transition-all duration-300">
                 <Globe className="h-6 w-6" />
               </button>
@@ -101,7 +101,7 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
-                      className="w-full text-left px-4 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 
                                transition-all duration-300"
                     >
                       {lang.name}
@@ -113,7 +113,7 @@ const Navbar = () => {
 
             {/* User Icon with Dropdown */}
             <div className="hidden md:block relative group">
-              <button className="text-gray-700 hover:text-orange-500 p-2 rounded-full hover:bg-orange-50 
+              <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 
                                transition-all duration-300">
                 <User className="h-6 w-6" />
               </button>
@@ -123,14 +123,14 @@ const Navbar = () => {
                 <div className="py-2">
                   <Link
                     to="/login"
-                    className="block px-4 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 
+                    className="block px-4 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 
                              transition-all duration-300"
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
-                    className="block px-4 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 
+                    className="block px-4 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 
                              transition-all duration-300"
                   >
                     Register
@@ -140,9 +140,9 @@ const Navbar = () => {
             </div>
 
             {/* Cart Icon */}
-            <Link to="/cart" className="text-gray-700 hover:text-orange-500 p-2 relative group">
+            <Link to="/cart" className="text-gray-700 hover:text-pink-500 p-2 relative group">
               <ShoppingCart className="h-6 w-6 transform group-hover:scale-110 transition-transform duration-300" />
-              <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 
+              <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full h-5 w-5 
                              flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                 0
               </span>
@@ -152,7 +152,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 
-                       hover:text-orange-500 hover:bg-orange-50 focus:outline-none transition-all duration-300"
+                       hover:text-pink-500 hover:bg-pink-50 focus:outline-none transition-all duration-300"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -174,18 +174,18 @@ const Navbar = () => {
                 type="text"
                 placeholder="Search for products..."
                 className="w-full px-6 py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
-                         outline-none ring-2 ring-orange-500/50 focus:ring-orange-500 focus:bg-white
+                         outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
                          transition-all duration-300"
               />
               <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
                 <button 
                   onClick={triggerImageUpload}
-                  className="text-gray-500 hover:text-orange-500 transition-colors duration-300 p-1"
+                  className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"
                   title="Search by image"
                 >
                   <Camera className="h-5 w-5" />
                 </button>
-                <button className="text-gray-500 group-hover:text-orange-500 transition-colors duration-300">
+                <button className="text-gray-500 group-hover:text-pink-500 transition-colors duration-300">
                   <Search className="h-5 w-5" />
                 </button>
               </div>
@@ -206,8 +206,8 @@ const Navbar = () => {
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className="text-gray-700 hover:text-orange-500 px-4 py-2 rounded-full text-sm
-                             hover:bg-orange-50 transition-all duration-300 text-center"
+                    className="text-gray-700 hover:text-pink-500 px-4 py-2 rounded-full text-sm
+                             hover:bg-pink-50 transition-all duration-300 text-center"
                   >
                     {lang.name}
                   </button>
@@ -219,17 +219,17 @@ const Navbar = () => {
             <div className="flex flex-col space-y-3 pt-4">
               <Link
                 to="/login"
-                className="text-gray-700 hover:text-orange-500 px-4 py-3 rounded-full text-base font-medium
-                         hover:bg-orange-50 transition-all duration-300 text-center"
+                className="text-gray-700 hover:text-pink-500 px-4 py-3 rounded-full text-base font-medium
+                         hover:bg-pink-50 transition-all duration-300 text-center"
                 onClick={toggleMenu}
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="bg-orange-500 text-white px-6 py-3 rounded-full 
-                         text-base font-medium hover:bg-orange-600 transition-all duration-300
-                         shadow-lg hover:shadow-orange-500/25 text-center"
+                className="bg-pink-500 text-white px-6 py-3 rounded-full 
+                         text-base font-medium hover:bg-pink-600 transition-all duration-300
+                         shadow-lg hover:shadow-pink-500/25 text-center"
                 onClick={toggleMenu}
               >
                 Register
