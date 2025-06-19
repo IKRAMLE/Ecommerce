@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { GiPaperLantern } from 'react-icons/gi';
-import anime from 'animejs/lib/anime.es.js';
 
 // This component injects the Google Font into the document's head.
 const FontStyles = () => (
@@ -77,49 +76,10 @@ const WavePattern = () => (
 );
 
 const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: boolean }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cardElement = cardRef.current;
-    if (!cardElement) return;
-
-    const handleMouseEnter = () => {
-      anime({
-        targets: cardElement,
-        translateY: -8,
-        scale: 1.03,
-        boxShadow: '0px 15px 30px -10px rgba(236, 72, 153, 0.3)',
-        duration: 300,
-        easing: 'easeOutQuad'
-      });
-    };
-
-    const handleMouseLeave = () => {
-      anime({
-        targets: cardElement,
-        translateY: 0,
-        scale: 1,
-        boxShadow: '0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        duration: 300,
-        easing: 'easeOutQuad'
-      });
-    };
-
-    cardElement.addEventListener('mouseenter', handleMouseEnter);
-    cardElement.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      cardElement.removeEventListener('mouseenter', handleMouseEnter);
-      cardElement.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
   return (
     <div
-      ref={cardRef}
-      className={`category-card relative rounded-xl border border-pink-200 bg-pink-50/80 p-4 shadow-lg
+      className={`relative rounded-xl border border-pink-200 bg-pink-50/80 p-4 transition-all duration-300 hover:border-pink-300 hover:shadow-lg hover:-translate-y-1
       ${isLarge ? 'min-h-[24rem] md:min-h-full' : 'min-h-[16rem] md:min-h-[18rem]'}`}
-      style={{ opacity: 0 }} // Initial state for scroll animation
     >
       <Lantern className="left-6" />
       {!isLarge && <Lantern className="right-6" />}
@@ -151,55 +111,18 @@ const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: 
 const Categories: React.FC = () => {
   const smallCategories = categoriesData.filter(c => !c.isLarge);
   const largeCategory = categoriesData.find(c => c.isLarge);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: '.category-card',
-              translateY: [50, 0],
-              opacity: [0, 1],
-              delay: anime.stagger(100, { start: 100 }),
-              duration: 800,
-              easing: 'easeOutExpo',
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <>
       <FontStyles />
-      <section ref={sectionRef} className="py-12 md:py-20 bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 relative overflow-hidden">
-        {/* Decorative Blobs */}
-        <div className="absolute top-0 -left-20 w-72 h-72 bg-rose-200 rounded-full opacity-30 mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-0 -right-20 w-72 h-72 bg-pink-200 rounded-full opacity-30 mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-80 h-80 bg-red-200 rounded-full opacity-30 mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
-
-        <div className="container mx-auto px-4 relative">
-          <div className="text-center mb-12 md:mb-16">
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 md:mb-16 mt-15">
             <h2 className="font-lilita text-4xl md:text-5xl text-pink-500 uppercase tracking-wider">
               Our Categories
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 max-w-6xl mx-auto -mt-10">
             {/* Small Categories */}
             <div className="md:col-start-1 md:row-start-1">
               <CategoryCard category={smallCategories[0]} />
