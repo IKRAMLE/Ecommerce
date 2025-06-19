@@ -88,7 +88,7 @@ class HeroSection extends Component<{}, HeroSectionState> {
     const { currentSlide } = this.state;
 
     return (
-      <div className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden max-w-7xl mx-auto top-30 ">
+      <div className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden max-w-7xl mx-auto top-28 ">
         {/* Hero Images */}
         {this.heroImages.map((image, index) => (
           <div
