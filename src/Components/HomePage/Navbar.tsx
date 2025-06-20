@@ -37,11 +37,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-[calc(100%-2.5rem)] z-50 bg-white border-b border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] top-4 left-1/2 -translate-x-1/2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+    <nav className="fixed w-full sm:w-[calc(100%-2.5rem)] z-50 bg-white border-b border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] top-0 sm:top-4 left-0 sm:left-1/2 sm:-translate-x-1/2 min-h-16 relative">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="flex flex-col sm:flex-row justify-between h-auto sm:h-20 py-2 sm:py-0">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto mb-2 sm:mb-0">
             <Link to="/" className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
               <img 
                 src="/logo.png" 
@@ -49,20 +49,32 @@ const Navbar = () => {
                 className="h-10 w-auto drop-shadow-lg "
               />
             </Link>
+            {/* Mobile menu button */}
+            <button
+              onClick={toggleMenu}
+              className="sm:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 
+                       hover:text-pink-500 hover:bg-pink-50 focus:outline-none transition-all duration-300"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
 
           {/* Search bar */}
-          <div className="flex-1 flex items-center justify-center px-4 lg:px-8">
-            <div className="w-full max-w-lg">
+          <div className="w-full sm:flex-1 flex items-center justify-center px-0 sm:px-4 lg:px-8 mb-2 sm:mb-0">
+            <div className="w-full max-w-full sm:max-w-lg">
               <div className="relative group">
                 <input
                   type="text"
                   placeholder="Search for products..."
-                  className="w-full px-6 py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
+                  className="w-full px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
                            outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
-                           transition-all duration-300"
+                           transition-all duration-300 text-sm sm:text-base"
                 />
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
+                <div className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
                   <button 
                     onClick={triggerImageUpload}
                     className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"
@@ -86,7 +98,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side buttons and icons */}
-          <div className="flex items-center space-x-6">
+          <div className="hidden sm:flex items-center space-x-4 md:space-x-6">
             {/* Language Selector */}
             <div className="hidden md:block relative group">
               <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 
@@ -147,37 +159,24 @@ const Navbar = () => {
                 0
               </span>
             </Link>
-            
-            {/* Mobile menu button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 
-                       hover:text-pink-500 hover:bg-pink-50 focus:outline-none transition-all duration-300"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-white border-b border-gray-200 shadow-sm">
+        <div className="sm:hidden absolute w-full bg-white border-b border-gray-200 shadow-sm z-50 top-full left-0">
           <div className="px-4 pt-4 pb-6 space-y-4">
             {/* Mobile search bar */}
             <div className="relative group">
               <input
                 type="text"
                 placeholder="Search for products..."
-                className="w-full px-6 py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
+                className="w-full px-4 py-2 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
                          outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
-                         transition-all duration-300"
+                         transition-all duration-300 text-sm"
               />
-              <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
+              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
                 <button 
                   onClick={triggerImageUpload}
                   className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"

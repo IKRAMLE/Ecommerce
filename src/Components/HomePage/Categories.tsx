@@ -108,11 +108,11 @@ const Categories: React.FC = () => {
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 md:mb-16 mt-15">
-            <h2 className="font-lilita text-4xl md:text-5xl text-pink-500 uppercase tracking-wider">
+            <h2 className="font-lilita text-4xl md:text-5xl text-pink-500 uppercase tracking-wider -mt-15">
               Our Categories
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 max-w-6xl mx-auto -mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 max-w-6xl mx-auto -mt-5">
             {/* Small Categories */}
             <div className="md:col-start-1 md:row-start-1">
               <CategoryCard category={smallCategories[0]} />
