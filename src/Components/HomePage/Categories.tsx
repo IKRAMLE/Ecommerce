@@ -22,38 +22,32 @@ const categoriesData = [
   {
     name: 'Hair Care',
     images: [
-      { src: 'https://i.postimg.cc/9fpdGz3g/pngegg-10.png', alt: 'Shampoo', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-6' },
-      { src: 'https://i.postimg.cc/B6L05p3v/pngegg-12.png', alt: 'Hair Oil', position: 'z-10 bottom-0 left-0 w-24 md:w-28 -rotate-12' },
+      { src: '/HairCare.jpg', alt: 'Hair Care', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-6' },
     ],
   },
   {
     name: 'Body Care',
     images: [
-      { src: 'https://i.postimg.cc/y8Yg3yY0/pngegg-13.png', alt: 'Lotion', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-3' },
-      { src: 'https://i.postimg.cc/RhdJ4mP5/pngegg-14.png', alt: 'Body Scrub', position: 'z-10 bottom-0 left-0 w-24 md:w-28 -rotate-12' },
+      { src: '/BodyCare.jpg', alt: 'Body Care', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-3' },
     ],
   },
   {
     name: 'Face Care',
     images: [
-      { src: 'https://i.postimg.cc/pXj2VqjV/pngegg-16.png', alt: 'Face Wash', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-6' },
-      { src: 'https://i.postimg.cc/J7s84f1f/pngegg-18.png', alt: 'Face Cream', position: 'z-10 bottom-0 left-0 w-24 md:w-28 -rotate-6' },
+      { src: '/FaceCare.jpg', alt: 'Face Care', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-28 md:w-32 rotate-6' },
     ],
   },
   {
     name: 'Fragrance & Scents',
     images: [
-      { src: 'https://i.postimg.cc/tCNxS0Y9/pngegg-19.png', alt: 'Perfume', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-20 md:w-24 rotate-12' },
-      { src: 'https://i.postimg.cc/Y9pS34s7/pngegg-20.png', alt: 'Perfume 2', position: 'z-10 bottom-0 right-0 w-20 md:w-24 -rotate-12' },
+      { src: '/Fragrance&Scents.jpg', alt: 'Fragrance & Scents', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-20 md:w-24 rotate-12' },
     ],
   },
   {
     name: 'Makeup & Beauty',
     isLarge: true,
     images: [
-      { src: 'https://i.postimg.cc/pL4jN6fV/pngegg-22.png', alt: 'Eyeshadow Palette', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-48' },
-      { src: 'https://i.postimg.cc/3RkZ3N3b/pngegg-24.png', alt: 'Makeup Brushes', position: 'z-10 -bottom-4 right-0 w-40 rotate-12' },
-      { src: 'https://i.postimg.cc/FKs3YV0W/pngegg-21.png', alt: 'Lipstick', position: 'z-10 -bottom-4 left-0 w-32 -rotate-12' },
+      { src: '/MakeUp.jpg', alt: 'Makeup & Beauty', position: 'z-20 bottom-0 left-1/2 -translate-x-1/2 w-48' },
     ],
   },
 ];
@@ -76,10 +70,18 @@ const WavePattern = () => (
 );
 
 const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: boolean }) => {
+  // Use the first image as background
+  const bgImage = category.images[0]?.src;
   return (
     <div
       className={`relative rounded-xl border border-pink-200 bg-pink-50/80 p-4 transition-all duration-300 hover:border-pink-300 hover:shadow-lg hover:-translate-y-1
       ${isLarge ? 'min-h-[24rem] md:min-h-full' : 'min-h-[16rem] md:min-h-[18rem]'}`}
+      style={{
+        backgroundImage: bgImage ? `url(${bgImage})` : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
       <Lantern className="left-6" />
       {!isLarge && <Lantern className="right-6" />}
@@ -90,19 +92,7 @@ const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: 
         </h3>
       </div>
 
-      <div className="absolute inset-0 pt-16">
-        <div className="relative w-full h-full">
-          {category.images.map((image: any, index: number) => (
-            <img
-              key={index}
-              src={image.src}
-              alt={image.alt}
-              className={`absolute object-contain drop-shadow-lg ${image.position}`}
-            />
-          ))}
-        </div>
-      </div>
-      
+      {/* Remove the <img> rendering, keep the WavePattern overlay */}
       <WavePattern />
     </div>
   );
