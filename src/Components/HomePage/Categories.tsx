@@ -74,8 +74,9 @@ const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: 
   const bgImage = category.images[0]?.src;
   return (
     <div
-      className={`relative rounded-xl border border-pink-200 bg-pink-50/80 p-4 transition-all duration-300 hover:border-pink-300 hover:shadow-lg hover:-translate-y-1
-      ${isLarge ? 'min-h-[24rem] md:min-h-full' : 'min-h-[16rem] md:min-h-[18rem]'}`}
+      className={`relative rounded-xl border border-pink-200 bg-pink-50/80 p-3 sm:p-4 lg:p-6 transition-all duration-300 hover:border-pink-300 hover:shadow-lg hover:-translate-y-1
+      w-full max-w-full mx-auto
+      ${isLarge ? 'min-h-[20rem] sm:min-h-[24rem] md:min-h-full' : 'min-h-[12rem] sm:min-h-[16rem] md:min-h-[18rem]'}`}
       style={{
         backgroundImage: bgImage ? `url(${bgImage})` : undefined,
         backgroundSize: 'cover',
@@ -83,16 +84,14 @@ const CategoryCard = ({ category, isLarge = false }: { category: any; isLarge?: 
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <Lantern className="left-6" />
-      {!isLarge && <Lantern className="right-6" />}
+      <Lantern className="left-4 sm:left-6" />
+      {!isLarge && <Lantern className="right-4 sm:right-6" />}
       
       <div className="relative z-10 text-center">
-        <h3 className="font-lilita text-2xl md:text-3xl lg:text-4xl text-white uppercase tracking-wider">
+        <h3 className="font-lilita text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white uppercase tracking-wider">
           {category.name}
         </h3>
       </div>
-
-      {/* Remove the <img> rendering, keep the WavePattern overlay */}
       <WavePattern />
     </div>
   );
@@ -105,14 +104,14 @@ const Categories: React.FC = () => {
   return (
     <>
       <FontStyles />
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16 mt-15">
-            <h2 className="font-lilita text-4xl md:text-5xl text-pink-500 uppercase tracking-wider -mt-15">
+      <section className="py-8 sm:py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 mt-10 sm:mt-15">
+            <h2 className="font-lilita text-3xl sm:text-4xl md:text-5xl text-pink-500 uppercase tracking-wider sm:-mt-15">
               Our Categories
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 max-w-6xl mx-auto -mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-2 gap-4 sm:gap-6 max-w-6xl mx-auto -mt-2 sm:-mt-5">
             {/* Small Categories */}
             <div className="md:col-start-1 md:row-start-1">
               <CategoryCard category={smallCategories[0]} />

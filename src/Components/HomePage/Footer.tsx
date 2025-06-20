@@ -3,10 +3,10 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, Fa
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white text-sm sm:text-base">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-3 sm:px-4 py-10 sm:py-14 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
@@ -23,17 +23,17 @@ const Footer = () => {
             </p>
 
             {/* Social Media */}
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
+            <div className="flex space-x-3 sm:space-x-4 mt-6">
+              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
                 <FaFacebookF className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
+              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
                 <FaInstagram className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
+              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
                 <FaTwitter className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
+              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
                 <FaYoutube className="h-5 w-5" />
               </a>
             </div>
@@ -103,12 +103,12 @@ const Footer = () => {
 
       {/* Payment Methods & Copyright */}
       <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-400">
+        <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 text-center md:text-left">
+            <div className="text-xs sm:text-sm text-gray-400">
               © 2024 Bloom. All rights reserved.
             </div>
-      
+            {/* Add payment methods here if needed, stacked on mobile */}
           </div>
         </div>
       </div>

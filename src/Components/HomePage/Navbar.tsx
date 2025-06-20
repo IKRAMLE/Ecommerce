@@ -42,10 +42,10 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto mb-2 sm:mb-0">
             <Link to="/" className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
-              <span className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent -ml-9">Bloom</span>
+              <span className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent ml-0 sm:-ml-4 md:-ml-6">Bloom</span>
             </Link>
             {/* Desktop Nav Links */}
-            <div className="hidden sm:flex items-center space-x-6 ml-50">
+            <div className="hidden sm:flex items-center space-x-4 md:space-x-6 ml-0 sm:ml-4 md:ml-8 lg:ml-12">
               <Link to="/" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Home</Link>
               <Link to="/about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">About</Link>
               <Link to="/shop" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Shop</Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side buttons and icons */}
-          <div className="hidden sm:flex items-center space-x-4 md:space-x-2 -mr-10">
+          <div className="hidden sm:flex items-center space-x-4 md:space-x-6 mr-0 md:mr-4 lg:mr-8">
             {/* Language Selector */}
             <div className="hidden md:block relative group">
               <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 

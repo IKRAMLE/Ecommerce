@@ -83,7 +83,7 @@ const Promotions: React.FC = () => {
                 <img
                   src={deal.image}
                   alt={deal.name}
-                  className="w-28 h-28 object-cover rounded-lg mb-4 border border-pink-50 shadow-sm"
+                  className="w-36 h-36 sm:w-44 sm:h-44 object-cover rounded-lg mb-4 border border-pink-50 shadow-sm"
                 />
                 <h3 className="font-lilita text-lg text-pink-400 mb-2 text-center">{deal.name}</h3>
                 <div className="flex items-center gap-2 mb-2">
