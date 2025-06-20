@@ -5,6 +5,7 @@ import Products from "../Components/HomePage/Products"
 import Promotions from "../Components/HomePage/Promotions"
 import WhyUs from "../Components/HomePage/WhyUs"
 import Testimonials from "../Components/HomePage/Testimonials"
+import Newsletter from "../Components/HomePage/Newsletter"
 
 function HomePage() {
   return (
@@ -16,6 +17,7 @@ function HomePage() {
     <Promotions />
     <WhyUs />
     <Testimonials />
+    <Newsletter />
     </>
   )
 }
