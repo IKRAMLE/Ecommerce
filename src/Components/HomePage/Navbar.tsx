@@ -27,7 +27,6 @@ const Navbar = () => {
     { code: 'en', name: 'English' },
     { code: 'es', name: 'Español' },
     { code: 'fr', name: 'Français' },
-    { code: 'de', name: 'Deutsch' },
     { code: 'ar', name: 'العربية' }
   ];
 
@@ -43,12 +42,15 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto mb-2 sm:mb-0">
             <Link to="/" className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
-              <img 
-                src="/logo.png" 
-                alt="Movia Logo" 
-                className="h-10 w-auto drop-shadow-lg "
-              />
+              <span className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent -ml-9">Bloom</span>
             </Link>
+            {/* Desktop Nav Links */}
+            <div className="hidden sm:flex items-center space-x-6 ml-50">
+              <Link to="/" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Home</Link>
+              <Link to="/about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">About</Link>
+              <Link to="/shop" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Shop</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Contact</Link>
+            </div>
             {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
@@ -64,7 +66,7 @@ const Navbar = () => {
           </div>
 
           {/* Search bar */}
-          <div className="w-full sm:flex-1 flex items-center justify-center px-0 sm:px-4 lg:px-8 mb-2 sm:mb-0">
+          <div className="w-full sm:flex-1 flex items-center justify-center px-0 sm:px-4 lg:px-8 mb-2 sm:mb-0 ">
             <div className="w-full max-w-full sm:max-w-lg">
               <div className="relative group">
                 <input
@@ -98,7 +100,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side buttons and icons */}
-          <div className="hidden sm:flex items-center space-x-4 md:space-x-6">
+          <div className="hidden sm:flex items-center space-x-4 md:space-x-2 -mr-10">
             {/* Language Selector */}
             <div className="hidden md:block relative group">
               <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 
@@ -167,6 +169,13 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="sm:hidden absolute w-full bg-white border-b border-gray-200 shadow-sm z-50 top-full left-0">
           <div className="px-4 pt-4 pb-6 space-y-4">
+            {/* Mobile Nav Links */}
+            <div className="flex flex-col space-y-2 mb-4">
+              <Link to="/" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Home</Link>
+              <Link to="/about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>About</Link>
+              <Link to="/shop" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Shop</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Contact</Link>
+            </div>
             {/* Mobile search bar */}
             <div className="relative group">
               <input
