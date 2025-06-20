@@ -6,6 +6,7 @@ import Promotions from "../Components/HomePage/Promotions"
 import WhyUs from "../Components/HomePage/WhyUs"
 import Testimonials from "../Components/HomePage/Testimonials"
 import Newsletter from "../Components/HomePage/Newsletter"
+import Footer from "../Components/HomePage/Footer"
 
 function HomePage() {
   return (
@@ -18,6 +19,7 @@ function HomePage() {
     <WhyUs />
     <Testimonials />
     <Newsletter />
+    <Footer />
     </>
   )
 }
