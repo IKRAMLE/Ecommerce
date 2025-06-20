@@ -68,7 +68,7 @@ const Products: React.FC = () => {
         <div className="relative max-w-6xl mx-auto flex items-center">
           <button
             onClick={prev}
-            className="absolute left-0 z-10 bg-pink-400 hover:bg-pink-500 text-white p-3 rounded-full shadow transition-all duration-300 -ml-5"
+            className="absolute left-0 z-10 bg-pink-400 hover:bg-pink-500 text-white p-3 rounded-full shadow transition-all duration-300 -ml-20"
             aria-label="Previous"
           >
             <FaChevronLeft className="w-6 h-6 " />
@@ -77,12 +77,12 @@ const Products: React.FC = () => {
             {visibleProducts.map(product => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl border border-pink-100 shadow hover:shadow-lg transition-all flex flex-col items-center p-6 relative group min-w-[220px] max-w-xs"
+                className="bg-white rounded-xl border border-pink-100 shadow hover:shadow-lg transition-all flex flex-col items-center p-6 relative group min-w-[300px] max-w-md"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-32 h-32 object-cover rounded-lg mb-4 border border-pink-50 shadow-sm"
+                  className="w-56 h-56 object-cover rounded-lg mb-8 border border-pink-50 shadow-sm"
                 />
                 <h3 className="font-lilita text-xl text-pink-400 mb-2 text-center">{product.name}</h3>
                 <div className="text-lg font-semibold text-gray-700 mb-4">${product.price.toFixed(2)}</div>
@@ -95,7 +95,7 @@ const Products: React.FC = () => {
           </div>
           <button
             onClick={next}
-            className="absolute right-0 z-10 bg-pink-400 hover:bg-pink-500 text-white p-3 rounded-full shadow transition-all duration-300 -mr-5"
+            className="absolute right-0 z-10 bg-pink-400 hover:bg-pink-500 text-white p-3 rounded-full shadow transition-all duration-300 -mr-20"
             aria-label="Next"
           >
             <FaChevronRight className="w-6 h-6" />
