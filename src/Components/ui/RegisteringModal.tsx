@@ -83,10 +83,14 @@ const RegisteringModal: React.FC<RegisteringModalProps> = ({ open, onClose, onSw
                   onChange={handleChange}
                   required
                   className="peer pl-10 pr-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all bg-white/60 w-full placeholder-transparent shadow-sm"
-                  placeholder="Name"
+                  placeholder={form.name ? '' : 'Name'}
                   aria-label="Name"
                 />
-                <label className="absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-300 bg-white/70 px-1">
+                <label
+                  className={`absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 bg-white/70 px-1
+                    peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500
+                    ${form.name ? '-top-5 text-xs text-pink-500' : 'text-base text-pink-300'}`}
+                >
                   Name
                 </label>
               </div>
@@ -100,10 +104,14 @@ const RegisteringModal: React.FC<RegisteringModalProps> = ({ open, onClose, onSw
                   onChange={handleChange}
                   required
                   className="peer pl-10 pr-4 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all bg-white/60 w-full placeholder-transparent shadow-sm"
-                  placeholder="Email"
+                  placeholder={form.email ? '' : 'Email'}
                   aria-label="Email"
                 />
-                <label className="absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-300 bg-white/70 px-1">
+                <label
+                  className={`absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 bg-white/70 px-1
+                    peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500
+                    ${form.email ? '-top-5 text-xs text-pink-500' : 'text-base text-pink-300'}`}
+                >
                   Email
                 </label>
               </div>
@@ -117,10 +125,14 @@ const RegisteringModal: React.FC<RegisteringModalProps> = ({ open, onClose, onSw
                   onChange={handleChange}
                   required
                   className="peer pl-10 pr-10 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all bg-white/60 w-full placeholder-transparent shadow-sm"
-                  placeholder="Password"
+                  placeholder={form.password ? '' : 'Password'}
                   aria-label="Password"
                 />
-                <label className="absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-300 bg-white/70 px-1">
+                <label
+                  className={`absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 bg-white/70 px-1
+                    peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500
+                    ${form.password ? '-top-5 text-xs text-pink-500' : 'text-base text-pink-300'}`}
+                >
                   Password
                 </label>
                 <button
@@ -143,10 +155,14 @@ const RegisteringModal: React.FC<RegisteringModalProps> = ({ open, onClose, onSw
                   onChange={handleChange}
                   required
                   className="peer pl-10 pr-10 py-3 rounded-lg border border-pink-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all bg-white/60 w-full placeholder-transparent shadow-sm"
-                  placeholder="Confirm Password"
+                  placeholder={form.confirm ? '' : 'Confirm Password'}
                   aria-label="Confirm Password"
                 />
-                <label className="absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-pink-300 bg-white/70 px-1">
+                <label
+                  className={`absolute left-10 top-3 text-pink-300 pointer-events-none transition-all duration-200 bg-white/70 px-1
+                    peer-focus:-top-5 peer-focus:text-xs peer-focus:text-pink-500
+                    ${form.confirm ? '-top-5 text-xs text-pink-500' : 'text-base text-pink-300'}`}
+                >
                   Confirm Password
                 </label>
                 <button
