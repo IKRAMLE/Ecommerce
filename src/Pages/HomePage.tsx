@@ -8,10 +8,14 @@ import Testimonials from "../Components/HomePage/Testimonials"
 import Newsletter from "../Components/HomePage/Newsletter"
 import Footer from "../Components/HomePage/Footer"
 
-function HomePage() {
+interface HomePageProps {
+  onLoginClick?: () => void;
+}
+
+function HomePage({ onLoginClick }: HomePageProps) {
   return (
     <>
-    <Navbar />
+    <Navbar onLoginClick={onLoginClick} />
     <HeroSection />
     <Categories />
     <Products />
