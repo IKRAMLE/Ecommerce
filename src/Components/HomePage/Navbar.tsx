@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Menu, X, Search, Camera, Globe } from 'lucide-react';
+import { ShoppingCart, Menu, X, Globe } from 'lucide-react';
 
 interface NavbarProps {
   onLoginClick?: () => void;
@@ -8,23 +8,9 @@ interface NavbarProps {
 
 const Navbar = ({ onLoginClick }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      // Here you would typically handle the image upload and search
-      console.log('Image uploaded:', file);
-      // You can add your image search logic here
-    }
-  };
-
-  const triggerImageUpload = () => {
-    fileInputRef.current?.click();
   };
 
   const languages = [
@@ -42,75 +28,38 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
   return (
     <nav className="fixed w-full sm:w-[calc(100%-2.5rem)] z-50 bg-white border-b border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] top-0 sm:top-4 left-0 sm:left-1/2 sm:-translate-x-1/2 min-h-16 relative">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 ">
-        <div className="flex flex-col sm:flex-row justify-between h-auto sm:h-20 py-2 sm:py-0 -mr-17">
+        <div className="relative flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center w-full sm:w-auto mb-2 sm:mb-0 mr-10">
-            <Link to="/" className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300 mr-25">
-              <span className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent ml-0 sm:-ml-4 md:-ml-6">Bloom</span>
+          <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
+              <span className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">Bloom</span>
             </Link>
           </div>
-          {/* Nav Links + Search Bar */}
-          <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto flex-1">
-            {/* Desktop Nav Links */}
-            <div className="hidden sm:flex items-center space-x-4 md:space-x-6 ml-0 sm:ml-4 md:ml-8 lg:ml-12 mr-4">
+
+          {/* Nav Links (Desktop) */}
+          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-end sm:mr-8">
+            <div className="flex items-center space-x-4 md:space-x-6">
               <Link to="/" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Home</Link>
               <Link to="/about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">About</Link>
               <Link to="/shop" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Shop</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors ">Contact</Link>
-            </div>
-            {/* Search bar */}
-            <div className="w-full sm:flex-1 flex items-center justify-center px-0 sm:px-4 lg:px-8 mb-2 sm:mb-0 ">
-              <div className="w-full max-w-full sm:max-w-lg">
-                <div className="relative group">
-                  <input
-                    type="text"
-                    placeholder="Search for products..."
-                    className="w-full px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
-                             outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
-                             transition-all duration-300 text-sm sm:text-base"
-                  />
-                  <div className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
-                    <button 
-                      onClick={triggerImageUpload}
-                      className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"
-                      title="Search by image"
-                    >
-                      <Camera className="h-5 w-5" />
-                    </button>
-                    <button className="text-gray-500 group-hover:text-pink-500 transition-colors duration-300">
-                      <Search className="h-5 w-5" />
-                    </button>
-                  </div>
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleImageUpload}
-                    accept="image/*"
-                    className="hidden"
-                  />
-                </div>
-              </div>
+              <Link to="/contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors">Contact</Link>
             </div>
           </div>
 
-          {/* Right side buttons and icons */}
-          <div className="hidden sm:flex items-center space-x-4 md:space-x-6 mr-0 md:mr-4 lg:mr-8">
+          {/* Right side buttons and icons (Desktop) */}
+          <div className="hidden sm:flex items-center space-x-4">
             {/* Language Selector */}
             <div className="hidden md:block relative group">
-              <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 
-                               transition-all duration-300">
+              <button className="text-gray-700 hover:text-pink-500 p-2 rounded-full hover:bg-pink-50 transition-all duration-300">
                 <Globe className="h-6 w-6" />
               </button>
-              <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white border border-gray-200 
-                            shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                            transition-all duration-300 transform origin-top-right translate-x-2">
+              <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white border border-gray-200 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right">
                 <div className="py-2">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
-                      className="w-full text-left px-4 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 
-                               transition-all duration-300"
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 transition-all duration-300"
                     >
                       {lang.name}
                     </button>
@@ -122,8 +71,7 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
             {/* Cart Icon */}
             <Link to="/cart" className="text-gray-700 hover:text-pink-500 p-2 relative group">
               <ShoppingCart className="h-6 w-6 transform group-hover:scale-110 transition-transform duration-300" />
-              <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full h-5 w-5 
-                             flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+              <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                 0
               </span>
             </Link>
@@ -139,55 +87,37 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-pink-200 via-pink-400 to-pink-500 rounded-full blur-sm opacity-80"></span>
             </button>
           </div>
+
+          {/* Mobile menu toggle button */}
+          <div className="flex items-center sm:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-pink-500 p-2 rounded-md hover:bg-pink-50 transition-colors"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="sm:hidden absolute w-full bg-white border-b border-gray-200 shadow-sm z-50 top-full left-0">
-          <div className="px-4 pt-4 pb-6 space-y-4">
-            {/* Mobile Nav Links */}
-            <div className="flex flex-col space-y-2 mb-4">
-              <Link to="/" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Home</Link>
-              <Link to="/about" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>About</Link>
-              <Link to="/shop" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Shop</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-pink-500 font-medium transition-colors" onClick={toggleMenu}>Contact</Link>
-              {/* Mobile Login Button */}
+        <div className="sm:hidden" id="mobile-menu">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50" onClick={toggleMenu}>Home</Link>
+            <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50" onClick={toggleMenu}>About</Link>
+            <Link to="/shop" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50" onClick={toggleMenu}>Shop</Link>
+            <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50" onClick={toggleMenu}>Contact</Link>
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="px-2">
               <button
                 onClick={() => { onLoginClick && onLoginClick(); toggleMenu(); }}
-                className="text-white bg-gradient-to-r from-pink-500 to-purple-500 px-5 py-2 rounded-full font-semibold shadow hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-pink-400 mt-2"
+                className="w-full text-white bg-gradient-to-r from-pink-500 to-purple-500 px-5 py-2 rounded-full font-semibold shadow hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-pink-400"
               >
                 Login
               </button>
-            </div>
-            {/* Mobile search bar */}
-            <div className="relative group">
-              <input
-                type="text"
-                placeholder="Search for products..."
-                className="w-full px-4 py-2 rounded-full bg-gray-50 text-gray-900 placeholder-gray-500 
-                         outline-none ring-2 ring-pink-500/50 focus:ring-pink-500 focus:bg-white
-                         transition-all duration-300 text-sm"
-              />
-              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
-                <button 
-                  onClick={triggerImageUpload}
-                  className="text-gray-500 hover:text-pink-500 transition-colors duration-300 p-1"
-                  title="Search by image"
-                >
-                  <Camera className="h-5 w-5" />
-                </button>
-                <button className="text-gray-500 group-hover:text-pink-500 transition-colors duration-300">
-                  <Search className="h-5 w-5" />
-                </button>
-              </div>
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handleImageUpload}
-                accept="image/*"
-                className="hidden"
-              />
             </div>
           </div>
         </div>

@@ -1,10 +1,12 @@
 import HomePage from './Pages/HomePage';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Shop from './Pages/Shop';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import LoginModal from './Components/ui/LoginModal';
 import RegisteringModal from './Components/ui/RegisteringModal';
+
 
 function App() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -16,6 +18,7 @@ function App() {
         <Route path="/" element={<HomePage onLoginClick={() => setLoginOpen(true)} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/shop" element={<Shop />} />
       </Routes>
       <LoginModal
         open={loginOpen}
