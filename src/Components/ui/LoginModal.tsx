@@ -6,9 +6,10 @@ import { FaUserCircle, FaGoogle, FaFacebook } from 'react-icons/fa';
 interface LoginModalProps {
   open: boolean;
   onClose: () => void;
+  onSwitchToRegister?: () => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
+const LoginModal: React.FC<LoginModalProps> = ({ open, onClose, onSwitchToRegister }) => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -148,7 +149,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
               {/* Sign up link */}
               <div className="mt-4 text-center">
                 <span className="text-gray-600 text-base">Don&apos;t have an account? </span>
-                <a href="#" className="text-pink-500 underline font-semibold hover:text-pink-600 transition text-base">Sign up here</a>
+                <a
+                  href="#"
+                  className="text-pink-500 underline font-semibold hover:text-pink-600 transition text-base"
+                  onClick={e => {
+                    e.preventDefault();
+                    if (onSwitchToRegister) onSwitchToRegister();
+                  }}
+                >
+                  Sign up here
+                </a>
               </div>
               {/* Divider */}
               <div className="flex items-center w-full my-4">
