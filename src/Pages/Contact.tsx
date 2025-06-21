@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Components/HomePage/Navbar';
 import Footer from '../Components/HomePage/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, X } from 'lucide-react';
 import { FaInstagram, FaTwitter, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 
 const contactInfo = [
@@ -28,6 +28,7 @@ const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,7 +37,8 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setShowThankYou(true);
+    setTimeout(() => setShowThankYou(false), 3500);
     setForm({ name: '', email: '', message: '' });
   };
 
@@ -49,6 +51,36 @@ const Contact: React.FC = () => {
   return (
     <>
       <Navbar />
+      {/* Thank You Overlay */}
+      <AnimatePresence>
+        {showThankYou && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="bg-white rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center relative max-w-xs w-full"
+            >
+              <button
+                aria-label="Close"
+                onClick={() => setShowThankYou(false)}
+                className="absolute top-3 right-3 text-gray-400 hover:text-pink-500 focus:outline-none"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <CheckCircle2 className="w-14 h-14 text-green-500 mb-4 animate-bounce" />
+              <div className="text-2xl font-bold text-gray-800 mb-2 text-center">Thank you!</div>
+              <div className="text-gray-600 text-center">Your message has been sent.</div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Animated Gradient Background */}
       <div className="relative min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 pt-16 overflow-hidden">
         <motion.div
@@ -211,19 +243,6 @@ const Contact: React.FC = () => {
             >
               Send Message <Send className="w-5 h-5" />
             </motion.button>
-            <AnimatePresence>
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  className="flex flex-col items-center gap-2 text-green-600 font-semibold text-center mt-2"
-                >
-                  <CheckCircle2 className="w-8 h-8 mb-1 animate-bounce" />
-                  Thank you! Your message has been sent.
-                </motion.div>
-              )}
-            </AnimatePresence>
           </motion.form>
         </div>
 
